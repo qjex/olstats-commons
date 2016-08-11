@@ -1,0 +1,18 @@
+group 'xyz.qjex.olstats'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.jsoup:jsoup:1.9.2'
+    compile files('lib/cfutils-0.1.jar')
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.6.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.6.2'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

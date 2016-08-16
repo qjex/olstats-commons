@@ -30,7 +30,7 @@ public class Codeforces implements Platform{
             for (xyz.qjex.cfutils.Submission submission: submissions) {
                 result.add(new Submission(getName(), String.valueOf(submission.getId()),
                         submission.getProblem().getUniqueName(), submission.getCreationTimeSeconds(),
-                        user.getName()));
+                        user.getUserId()));
             }
             return result;
         } catch (IOException e) {

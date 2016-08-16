@@ -8,14 +8,14 @@ public class Submission {
     private String platformName;
     private String internalId;
     private long date;
-    private String user;
+    private String userId;
     private String taskName;
 
-    public Submission(String platformName, String internalId, String taskName, long date, String user) {
+    public Submission(String platformName, String internalId, String taskName, long date, String userId) {
         this.platformName = platformName;
         this.date = date;
         this.internalId = internalId;
-        this.user = user;
+        this.userId = userId;
         this.taskName = taskName;
     }
 
@@ -31,8 +31,8 @@ public class Submission {
         return platformName;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserId() {
+        return userId;
     }
 
     public String getTaskName() {

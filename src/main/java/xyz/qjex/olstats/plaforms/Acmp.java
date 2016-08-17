@@ -45,4 +45,15 @@ public class Acmp implements Platform {
     public String getIdDescriptor() {
         return "acmpId";
     }
+
+    @Override
+    public String getSiteName() {
+        return "acmp.ru";
+    }
+
+    @Override
+    public String getSiteAddress() {
+        return "https://acmp.ru";
+    }
+
 }

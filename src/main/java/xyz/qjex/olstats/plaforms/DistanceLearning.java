@@ -23,4 +23,14 @@ public class DistanceLearning implements Platform {
     public String getIdDescriptor() {
         return "dlId";
     }
+
+    @Override
+    public String getSiteName() {
+        return null;
+    }
+
+    @Override
+    public String getSiteAddress() {
+        return null;
+    }
 }

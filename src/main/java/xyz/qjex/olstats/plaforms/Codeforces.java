@@ -49,4 +49,14 @@ public class Codeforces implements Platform{
     public String getIdDescriptor() {
         return "cfHandle";
     }
+
+    @Override
+    public String getSiteName() {
+        return "codeforces.com/";
+    }
+
+    @Override
+    public String getSiteAddress() {
+        return "http://codeforces.com/";
+    }
 }

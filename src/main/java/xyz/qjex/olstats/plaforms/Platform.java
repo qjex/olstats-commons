@@ -11,7 +11,13 @@ import java.util.List;
 public interface Platform {
 
     List<Submission> getAllSubmissions(User user);
+
     String getName();
+
     String getIdDescriptor();
+
+    String getSiteName();
+
+    String getSiteAddress();
 
 }

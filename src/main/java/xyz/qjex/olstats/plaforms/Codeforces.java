@@ -28,6 +28,7 @@ public class Codeforces implements Platform{
             List<xyz.qjex.cfutils.Submission> submissions = ApiMethods.getUserStatus(new xyz.qjex.cfutils.User(handle));
             List<Submission> result = new ArrayList<>();
             for (xyz.qjex.cfutils.Submission submission: submissions) {
+                if (!submission.getVerdict().equalsIgnoreCase("ok")) continue;
                 result.add(new Submission(getName(), String.valueOf(submission.getId()),
                         submission.getProblem().getUniqueName(), submission.getCreationTimeSeconds(),
                         user.getUserId()));
@@ -52,7 +53,7 @@ public class Codeforces implements Platform{
 
     @Override
     public String getSiteName() {
-        return "codeforces.com/";
+        return "codeforces.com";
     }
 
     @Override

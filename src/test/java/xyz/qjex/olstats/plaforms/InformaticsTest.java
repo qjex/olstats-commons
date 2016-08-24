@@ -21,7 +21,7 @@ public class InformaticsTest {
 
         Map<String, String> ids = new HashMap<>();
         ids.put(inf.getIdDescriptor(), "57571");
-        User qjexUser = new User("0", "qjex", ids, 0L);
+        User qjexUser = new User("qjex", ids, 0L);
         List<Submission> submissions = inf.getAllSubmissions(qjexUser);
         assertNotNull(submissions);
         assertTrue(submissions.size() != 0);

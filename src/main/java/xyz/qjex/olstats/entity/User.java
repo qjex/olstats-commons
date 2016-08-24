@@ -9,16 +9,10 @@ public class User {
 
     private String name;
     private Map<String, String> ids;
-    private long lastUpdate;
 
-    public User(String name, Map<String, String> ids, Long lastUpdate) {
+    public User(String name, Map<String, String> ids) {
         this.ids = ids;
         this.name = name;
-        this.lastUpdate = lastUpdate;
-    }
-
-    public long getLastUpdate() {
-        return lastUpdate;
     }
 
     public String getName() {

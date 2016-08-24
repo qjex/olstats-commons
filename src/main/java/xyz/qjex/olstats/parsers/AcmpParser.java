@@ -40,11 +40,9 @@ public class AcmpParser {
                 result.addAll(parse(doc));
                 page++;
             } catch (IOException e) {
-                logger.error("Can't connect to acmp.ru " + "(" + query.toString() + ")");
                 e.printStackTrace();
                 return null;
             } catch (RuntimeException e) {
-                logger.error("Can't parse acmp.ru status page");
                 e.printStackTrace();
                 return null;
             }

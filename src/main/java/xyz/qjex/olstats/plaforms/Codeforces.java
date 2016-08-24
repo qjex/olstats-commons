@@ -21,8 +21,7 @@ public class Codeforces implements Platform{
     public List<Submission> getAllSubmissions(User user) {
         String handle = user.getId(getIdDescriptor());
         if (handle == null) {
-            logger.warn("Can't get codeforces handle for user " + user.getUserId() + "(" + user.getName() + ")");
-            return null;
+            throw new IllegalAccessError("can't get user handle");
         }
         try {
             List<xyz.qjex.cfutils.Submission> submissions = ApiMethods.getUserStatus(new xyz.qjex.cfutils.User(handle));
@@ -31,11 +30,10 @@ public class Codeforces implements Platform{
                 if (!submission.getVerdict().equalsIgnoreCase("ok")) continue;
                 result.add(new Submission(getName(), String.valueOf(submission.getId()),
                         submission.getProblem().getUniqueName(), submission.getCreationTimeSeconds(),
-                        user.getUserId()));
+                        handle));
             }
             return result;
         } catch (IOException e) {
-            logger.warn("Can't get submissions on cf for user " + user.getUserId() + " (" + handle +  ")");
             e.printStackTrace();
         }
         return null;
@@ -48,7 +46,7 @@ public class Codeforces implements Platform{
 
     @Override
     public String getIdDescriptor() {
-        return "cfHandle";
+        return "cf";
     }
 
     @Override

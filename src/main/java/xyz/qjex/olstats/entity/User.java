@@ -7,14 +7,12 @@ import java.util.Map;
  */
 public class User {
 
-    private String userId;
     private String name;
     private Map<String, String> ids;
     private long lastUpdate;
 
-    public User(String userId, String name, Map<String, String> ids, Long lastUpdate) {
+    public User(String name, Map<String, String> ids, Long lastUpdate) {
         this.ids = ids;
-        this.userId = userId;
         this.name = name;
         this.lastUpdate = lastUpdate;
     }
@@ -25,10 +23,6 @@ public class User {
 
     public String getName() {
         return name;
-    }
-
-    public String getUserId() {
-        return userId;
     }
 
     public Map<String, String> getIds() {

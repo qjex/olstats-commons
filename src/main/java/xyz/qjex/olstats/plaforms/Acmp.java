@@ -21,17 +21,15 @@ public class Acmp implements Platform {
     public List<Submission> getAllSubmissions(User user) {
         String acmpId = user.getId(getIdDescriptor());
         if (acmpId == null) {
-            logger.warn("Can't get acmp id for user " + user.getUserId() + "(" + user.getName() + ")");
-            return null;
+            throw new IllegalAccessError("can't get user handle");
         }
         List<AcmpSubmission> acmpSubmissions = new AcmpParser().getStatus(acmpId);
         if (acmpSubmissions == null) {
-            logger.warn("Can't get submissions on acmp for user " + user.getUserId() + " (" + acmpId +  ")");
             return null;
         }
         List<Submission> result = new ArrayList<>();
         for (AcmpSubmission submission : acmpSubmissions) {
-            result.add(new Submission(getName(), submission.getId(), submission.getTaskName(), submission.getDate(), user.getUserId()));
+            result.add(new Submission(getName(), submission.getId(), submission.getTaskName(), submission.getDate(), acmpId));
         }
         return result;
     }
@@ -43,7 +41,7 @@ public class Acmp implements Platform {
 
     @Override
     public String getIdDescriptor() {
-        return "acmpId";
+        return "acmp";
     }
 
     @Override

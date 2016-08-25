@@ -2,6 +2,7 @@ package xyz.qjex.olstats.plaforms;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.JSONException;
 import xyz.qjex.cfutils.methods.ApiMethods;
 import xyz.qjex.olstats.entity.Submission;
 import xyz.qjex.olstats.entity.User;
@@ -20,8 +21,8 @@ public class Codeforces implements Platform{
     @Override
     public List<Submission> getAllSubmissions(User user) {
         String handle = user.getId(getIdDescriptor());
-        if (handle == null) {
-            throw new IllegalAccessError("can't get user handle");
+        if (handle == null || handle.length() == 0) {
+            return null;
         }
         try {
             List<xyz.qjex.cfutils.Submission> submissions = ApiMethods.getUserStatus(new xyz.qjex.cfutils.User(handle));
@@ -33,7 +34,7 @@ public class Codeforces implements Platform{
                         handle));
             }
             return result;
-        } catch (IOException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
         return null;

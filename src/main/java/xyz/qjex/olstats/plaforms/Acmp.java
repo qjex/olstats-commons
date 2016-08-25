@@ -20,8 +20,8 @@ public class Acmp implements Platform {
     @Override
     public List<Submission> getAllSubmissions(User user) {
         String acmpId = user.getId(getIdDescriptor());
-        if (acmpId == null) {
-            throw new IllegalAccessError("can't get user handle");
+        if (acmpId == null || acmpId.length() == 0) {
+            return null;
         }
         List<AcmpSubmission> acmpSubmissions = new AcmpParser().getStatus(acmpId);
         if (acmpSubmissions == null) {

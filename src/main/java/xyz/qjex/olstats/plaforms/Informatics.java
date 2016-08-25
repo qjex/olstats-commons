@@ -16,8 +16,8 @@ public class Informatics implements Platform {
     @Override
     public List<Submission> getAllSubmissions(User user) {
         String handle = user.getId(getIdDescriptor());
-        if (handle == null) {
-            throw new IllegalAccessError("can't get user handle");
+        if (handle == null || handle.length() == 0) {
+            return null;
         }
         List<InformaticsSubmission> submissions = new InformaticsParser().getStatus(handle);
         if (submissions == null) {

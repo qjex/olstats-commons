@@ -15,6 +15,10 @@ public class User {
         this.name = name;
     }
 
+    public User() {
+
+    }
+
     public String getName() {
         return name;
     }
@@ -25,6 +29,14 @@ public class User {
 
     public String getId(String descriptor) {
         return ids.get(descriptor);
+    }
+
+    public void setIds(Map<String, String> ids) {
+        this.ids = ids;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setId(String descriptor, String id) {

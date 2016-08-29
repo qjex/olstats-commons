@@ -25,10 +25,10 @@ public class EOlymp implements Platform {
         String nick = user.getId(getIdDescriptor());
 
         try {
-            for (byte page = 0; page <= 1000; page++) {
-                String url = "https://www.e-olymp.com/en/users/" + nick + "/submissions?page=" + page;
+            for (int page = 0; page <= 1000; page++) {
+                String url = "http://www.e-olymp.com/en/users/" + nick + "/submissions?page=" + page;
 
-                Document doc = Jsoup.connect(url).get();
+                Document doc = Jsoup.connect(url).validateTLSCertificates(false).get();
                 Elements tbody;
 
                 try {
@@ -40,16 +40,14 @@ public class EOlymp implements Platform {
                 for (Element subm : tbody) {
                     boolean ac = false;
 
-                    for (Element elem : subm.getElementsByTag("b"))
-                        if (elem.text().equalsIgnoreCase("Accepted"))
+                    for (Element elem : subm.getElementsByTag("b")) {
+                        if (elem.text().equalsIgnoreCase("Accepted")) {
                             ac = true;
-                    if (!ac)
-                        continue;
-
-
+                        }
+                    }
+                    if (!ac) continue;
                     Submission sub = parseLine(subm.getAllElements(), nick);
-                    if (sub != null)
-                        res.add(sub);
+                    if (sub != null) res.add(sub);
                 }
             }
             return res;

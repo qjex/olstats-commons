@@ -38,4 +38,8 @@ public class Submission {
     public String getTaskName() {
         return taskName;
     }
+
+    public String toString() {
+        return platformName + ": " + internalId + " `" + taskName + "` " + userId;
+    }
 }
